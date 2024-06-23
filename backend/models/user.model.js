@@ -25,10 +25,20 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    isAdmin: {
+    role: {
         type: String,
         default: "user"
-    }
+    },
+    isBanned: {
+        type: Boolean,
+        default: false
+    },
+    cart: {
+        type: Array,
+        default: []
+    },
+    address: [{type: mongoose.Schema.Types.ObjectId, ref: 'address'}],
+    wishlist: [{type: mongoose.Schema.Types.ObjectId, ref: 'product'}],
 }, {
     timestamps: true
 });
